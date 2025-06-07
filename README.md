@@ -22,7 +22,12 @@ git clone <YOUR_GIT_URL>
 # Step 2: Navigate to the project directory.
 cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
+# Follow this only if Docker is conigured
+docker-compose up --build
+
+# If Docker is not configured then follow step 3 and step 4
+
+#Step 3
 npm i
 
 # Step 4: Start the development server with auto-reloading and an instant preview.

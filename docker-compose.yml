@@ -1,0 +1,53 @@
+# version: "3.9"
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.dev
+#       # mount your code + the certs
+#     volumes:
+#       - ./:/app
+#       - /app/node_modules
+#       - ./certs:/certs:ro
+#       # start Vite with HTTPS on 0.0.0.0:8000
+#     command:
+#       - npm
+#       - run
+#       - dev
+#       - --
+#       - --host
+#       - 0.0.0.0
+#       - --port
+#       - "8000"
+#       - --https
+#       - --cert
+#       - /certs/localhost.pem
+#       - --key
+#       - /certs/localhost-key.pem
+#     ports:
+#       - "8080:8080"
+
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      # - ./certs:/app/certs:ro      # make your certs folder available
+    # command:
+    #   - npm
+    #   - run
+    #   - dev
+    #   - --                       # pass flags to the script
+    #   - --host
+    #   - 0.0.0.0
+    #   - --port
+    #   - "8080"
+    ports:
+      - "8080:8080"
+
+    environment:
+    - HOST_IP=192.168.1.48     # ← set this to your machine’s LAN IP

@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Video, Users, Mic,Eye } from 'lucide-react';
+import { Video, Users, Mic, Eye } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {

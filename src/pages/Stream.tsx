@@ -144,7 +144,18 @@ const Stream = () => {
     }
   }, [isStreaming, currentStreamId, mediaStream]);
 
+  const constraints: MediaStreamConstraints = {
+    video: {
+      width: 1280,
+      height: 720,
+      // either remove facingMode:
+      // facingMode: undefined,
 
+      // —or— make it ideal instead of required:
+      facingMode: { ideal: "user" }
+    },
+    audio: true
+  };
 
   const initializeCamera = async () => {
     if (window.location.protocol !== 'https:') {
@@ -153,10 +164,13 @@ const Stream = () => {
     try {
       console.log('Initializing streamer camera...');
       console.log('Requesting camera/mic permission...');
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: 1280, height: 720, facingMode: 'user' },
-        audio: true
-      });
+
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+
+      // const stream = await navigator.mediaDevices.getUserMedia({
+      //   video: { width: 1280, height: 720, facingMode: 'user' },
+      //   audio: true
+      // });
 
       setMediaStream(stream);
 
@@ -181,11 +195,20 @@ const Stream = () => {
 
     } catch (err) {
       console.error("Error accessing camera:", err);
-      toast({
-        title: "Camera Error",
-        description: "Unable to access camera. Please check permissions.",
-        variant: "destructive",
-      });
+
+      if (err.name === "NotFoundError") {
+        toast({
+          title: "No Camera Found",
+          description: "We couldn’t find any camera matching your settings. Please connect a webcam or try again without a specific facingMode.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Camera Error",
+          description: "Unable to access camera. Please check permissions.",
+          variant: "destructive",
+        });
+      }
     }
   };
 
@@ -461,7 +484,7 @@ const Stream = () => {
                 )}
               </div>
               <div className="flex gap-2">
-                <Button
+              <Button
                   onClick={copyWatchLink}
                   variant="ghost"
                   className="bg-green-600 hover:bg-green-700 hover:text-white text-white"
@@ -553,7 +576,7 @@ const Stream = () => {
                   {isAudioEnabled ? 'Mic On' : 'Mic Off'}
                 </Button>
               </div>
-              {/* <Button variant="outline" className="border-white/10">
+               {/* <Button variant="outline" className="border-white/10">
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
               </Button> */}
@@ -639,7 +662,7 @@ const Stream = () => {
                 <div className="flex items-center">
                   <input
                     type="text"
-                    placeholder="coming soon...."
+                     placeholder="coming soon...."
                     disabled={!isStreaming}
                     className="flex-1 rounded-l-md py-2 px-3 bg-white/10 border-r-0 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none"
                   />
