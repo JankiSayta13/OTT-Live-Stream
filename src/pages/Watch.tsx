@@ -723,8 +723,8 @@ useEffect(() => {
               </div>
               <Button
                 onClick={copyWatchLink}
-                variant="outline"
-                className="border-white/10 text-white hover:bg-white/10 flex items-center gap-2"
+                variant="ghost"
+                className="text-white hover:text-white hover:bg-green-700 flex items-center gap-2"
               >
                 <ExternalLink className="h-4 w-4" />
                 Copy Watch Link
@@ -810,8 +810,8 @@ useEffect(() => {
               </div>
               <Button
                 onClick={() => navigate('/')}
-                variant="outline"
-                className="border-white/10 text-white hover:bg-white/10"
+                variant="ghost"
+                className="bg-red-600 hover:bg-red-700 hover:text-white text-white"
               >
                 Exit Stream
               </Button>

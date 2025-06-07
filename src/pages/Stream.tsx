@@ -463,15 +463,15 @@ const Stream = () => {
               <div className="flex gap-2">
                 <Button
                   onClick={copyWatchLink}
-                  variant="outline"
-                  className="border-white/10 text-white hover:bg-white/10"
+                  variant="ghost"
+                  className="bg-green-600 hover:bg-green-700 hover:text-white text-white"
                 >
                   Copy Watch Link
                 </Button>
                 <Button
                   onClick={endStream}
                   variant="ghost"
-                  className="text-gray-300 hover:text-white hover:bg-red-700"
+                  className="bg-red-600 hover:bg-red-700 hover:text-white text-white"
                 >
                   <X className="h-4 w-4 mr-2" />
                   End Stream
@@ -553,10 +553,10 @@ const Stream = () => {
                   {isAudioEnabled ? 'Mic On' : 'Mic Off'}
                 </Button>
               </div>
-              <Button variant="outline" className="border-white/10">
+              {/* <Button variant="outline" className="border-white/10">
                 <Settings className="h-4 w-4 mr-2" />
                 Settings
-              </Button>
+              </Button> */}
             </div>
           </div>
 
@@ -639,11 +639,11 @@ const Stream = () => {
                 <div className="flex items-center">
                   <input
                     type="text"
-                    placeholder="Type a message..."
+                    placeholder="coming soon...."
                     disabled={!isStreaming}
                     className="flex-1 rounded-l-md py-2 px-3 bg-white/10 border-r-0 border border-white/10 text-white placeholder:text-gray-500 focus:outline-none"
                   />
-                  <Button disabled={!isStreaming} className="rounded-l-none bg-purple-600 hover:bg-purple-700">
+                  <Button disabled={true} className="rounded-l-none bg-purple-600 hover:bg-purple-700">
                     Send
                   </Button>
                 </div>
