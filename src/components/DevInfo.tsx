@@ -9,7 +9,7 @@ const DevInfo = () => {
   if (!isDevelopment) return null;
 
   return (
-    <Card className="fixed bottom-4 right-4 bg-blue-900/80 border-blue-400/20 backdrop-blur-sm z-50 max-w-sm">
+    <Card className="fixed bottom-4 right-4 bg-blue-900/80 border-blue-400/20 backdrop-blur-sm z-50 max-w-sm hidden">
       <CardHeader className="pb-2">
         <CardTitle className="text-white text-sm flex items-center gap-2">
           <Badge variant="secondary">DEV</Badge>
